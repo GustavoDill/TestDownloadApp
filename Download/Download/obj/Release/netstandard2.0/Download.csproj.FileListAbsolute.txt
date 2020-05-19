@@ -1,0 +1,6 @@
+C:\Users\Gustavo\Desktop\Programs\.Projects\Android\Download\Download\Download\obj\Release\netstandard2.0\Download.csprojAssemblyReference.cache
+C:\Users\Gustavo\Desktop\Programs\.Projects\Android\Download\Download\Download\obj\Release\netstandard2.0\App.xaml.g.cs
+C:\Users\Gustavo\Desktop\Programs\.Projects\Android\Download\Download\Download\obj\Release\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\Gustavo\Desktop\Programs\.Projects\Android\Download\Download\Download\obj\Release\netstandard2.0\Download.csproj.CoreCompileInputs.cache
+C:\Users\Gustavo\Desktop\Programs\.Projects\Android\Download\Download\Download\obj\Release\netstandard2.0\Download.AssemblyInfoInputs.cache
+C:\Users\Gustavo\Desktop\Programs\.Projects\Android\Download\Download\Download\obj\Release\netstandard2.0\Download.AssemblyInfo.cs

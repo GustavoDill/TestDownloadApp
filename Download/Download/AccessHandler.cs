@@ -1,0 +1,6 @@
+﻿namespace Download
+{
+    class AccessHandler
+    {
+    }
+}
