@@ -1,5 +1,4 @@
-﻿
-using Android;
+﻿using Android;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
@@ -20,7 +19,9 @@ namespace Download.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+            MainPage.AppContext = this;
             permissionHandler = new PermissionHandler(this, new string[] { Manifest.Permission.WriteExternalStorage, Manifest.Permission.Internet });
+            permissionHandler.RequestAllPermissions();
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults) => permissionHandler.RequestPermissionResult(requestCode, permissions, grantResults);
     }

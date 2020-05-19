@@ -7,8 +7,8 @@
              x:Class="Download.MainPage">
     
     <StackLayout>
-        <Entry x:Name="url_box" Placeholder="Url" Text="http://download.freevar.com/UniversalBinTool/update.dat" />
-        <Entry x:Name="destiny_box" Placeholder="Destiny Directory" Text="/storage/emulated/0" />
+        <Entry x:Name="url_box" Placeholder="Url" Text="/storage/emulated/0/Download/update.dat" />
+        <Entry x:Name="destiny_box" Placeholder="Destiny Directory" Text="/storage/15E8-1113/file.dat" />
         <Button Clicked="Button_Clicked" Text="Download" />
         <!-- Place new controls here -->
     </StackLayout>

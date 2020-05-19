@@ -9,36 +9,19 @@ namespace Download
     public class PermissionHandler
     {
         public static Activity Activity { get; set; }
-        public PermissionHandler(string[] essentialPermissions, params string[] permissions)
+        public PermissionHandler(params string[] permissions)
         {
-            EssentialPermissions = essentialPermissions;
             Permissions = permissions;
             CheckPermissions();
         }
-        public PermissionHandler(params string[] essentialPermissions)
-        {
-            EssentialPermissions = essentialPermissions;
-            CheckPermissions();
-        }
-        public PermissionHandler(Activity activity, string[] essentialPermissions, params string[] permissions)
+        public PermissionHandler(Activity activity, params string[] permissions)
         {
             Activity = activity;
-            EssentialPermissions = essentialPermissions;
             Permissions = permissions;
-            CheckPermissions();
-        }
-        public PermissionHandler(Activity activity, params string[] essentialPermissions)
-        {
-            Activity = activity;
-            EssentialPermissions = essentialPermissions;
             CheckPermissions();
         }
         private void CheckPermissions()
         {
-            if (EssentialPermissions != null)
-                foreach (var p in Permissions)
-                    if (Activity.CheckSelfPermission(p) == Android.Content.PM.Permission.Granted && !grantedPermissions.Contains(p))
-                        grantedPermissions.Add(p);
             if (Permissions != null)
                 foreach (var p in Permissions)
                     if (Activity.CheckSelfPermission(p) == Android.Content.PM.Permission.Granted && !grantedPermissions.Contains(p))
@@ -65,26 +48,8 @@ namespace Download
                 CheckPermissions();
             }
         }
-        public bool HasEssentialPermissions()
-        {
-            if (EssentialPermissions == null)
-                return false;
-            foreach (var p in EssentialPermissions)
-                if (!HasPermission(p))
-                    return false;
-            return true;
-        }
-        public void RequestEssentialPermissions()
-        {
-            if (!(EssentialPermissions != null))
-                foreach (var p in EssentialPermissions)
-                    RequestPermission(p);
-        }
         public bool HasAllPermissions()
         {
-            if (EssentialPermissions != null)
-                if (!HasEssentialPermissions())
-                    return false;
             if (Permissions != null)
                 foreach (var p in Permissions)
                     if (!HasPermission(p))
@@ -93,20 +58,18 @@ namespace Download
         }
         public void RequestAllPermissions()
         {
-            if (!(EssentialPermissions != null))
-                foreach (var p in EssentialPermissions)
-                    RequestPermission(p);
-            if (!(Permissions != null))
+            if (Permissions != null)
                 foreach (var p in Permissions)
                     RequestPermission(p);
         }
         private readonly List<string> grantedPermissions = new List<string>();
-
+        private Dictionary<int, string> permissionRequestCodes = new Dictionary<int, string>();
         public void RequestPermission(string permission)
         {
             if (!HasPermission(permission))
             {
                 var id = new Random().NextInt(int.MaxValue / 2);
+                permissionRequestCodes.Add(id, permission);
                 if (Activity.ShouldShowRequestPermissionRationale(permission))
                 {
                     //set alert for executing the task
@@ -138,6 +101,7 @@ namespace Download
             for (int i = 0; i < permissions.Length; i++)
                 if (grantResults[i] == Android.Content.PM.Permission.Granted)
                     grantedPermissions.Add(permissions[i]);
+            permissionRequestCodes.Remove(requestCode);
             //base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
         public bool HasPermission(string permission)
@@ -145,7 +109,6 @@ namespace Download
             return grantedPermissions.Contains(permission);
         }
 
-        public string[] EssentialPermissions { get; private set; }
         public string[] Permissions { get; private set; }
     }
 }

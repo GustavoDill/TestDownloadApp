@@ -12,8 +12,8 @@
           "NETStandard.Library": "2.0.3",
           "Xamarin.Essentials": "1.3.1",
           "Xamarin.Forms": "4.4.0.991265",
-          "Mono.Android": "0.0.0.0",
-          "Xamarin.Android.Support.Compat": "1.0.0.0"
+          "Java.Interop": "0.1.0.0",
+          "Mono.Android": "0.0.0.0"
         },
         "runtime": {
           "Download.dll": {}
@@ -60,19 +60,19 @@
           }
         }
       },
+      "Java.Interop/0.1.0.0": {
+        "runtime": {
+          "Java.Interop.dll": {
+            "assemblyVersion": "0.1.0.0",
+            "fileVersion": "0.1.0.0"
+          }
+        }
+      },
       "Mono.Android/0.0.0.0": {
         "runtime": {
           "Mono.Android.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "Xamarin.Android.Support.Compat/1.0.0.0": {
-        "runtime": {
-          "Xamarin.Android.Support.Compat.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
           }
         }
       }
@@ -119,12 +119,12 @@
       "path": "xamarin.forms/4.4.0.991265",
       "hashPath": "xamarin.forms.4.4.0.991265.nupkg.sha512"
     },
-    "Mono.Android/0.0.0.0": {
+    "Java.Interop/0.1.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Xamarin.Android.Support.Compat/1.0.0.0": {
+    "Mono.Android/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

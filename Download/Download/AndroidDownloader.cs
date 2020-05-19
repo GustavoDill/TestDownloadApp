@@ -15,7 +15,7 @@ namespace Download.Droid
     public class AndroidDownloader
     {
         public event EventHandler<DownloadEventArgs> OnFileDownloaded;
-
+        public delegate string MyDelegate(string a);
         public void DownloadFile(string url, string destiny)
         {
 
@@ -25,25 +25,15 @@ namespace Download.Droid
                 webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
                 webClient.DownloadFileAsync(new Uri(url), destiny);
             }
-            catch (Exception ex)
+            catch
             {
-                if (OnFileDownloaded != null)
-                    OnFileDownloaded.Invoke(this, new DownloadEventArgs(false));
+                OnFileDownloaded?.Invoke(this, new DownloadEventArgs(false));
             }
         }
 
         private void Completed(object sender, AsyncCompletedEventArgs e)
         {
-            if (e.Error != null)
-            {
-                if (OnFileDownloaded != null)
-                    OnFileDownloaded.Invoke(this, new DownloadEventArgs(false));
-            }
-            else
-            {
-                if (OnFileDownloaded != null)
-                    OnFileDownloaded.Invoke(this, new DownloadEventArgs(true));
-            }
+            OnFileDownloaded?.Invoke(this, new DownloadEventArgs(e.Error == null));
         }
     }
 }

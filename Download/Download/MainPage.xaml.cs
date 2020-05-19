@@ -1,4 +1,5 @@
-﻿using Download.Droid;
+﻿using Android.App;
+using Download.Droid;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -15,21 +16,20 @@ namespace Download
         {
             InitializeComponent();
         }
+        public static Activity AppContext { get; set; }
         Button btn = null;
         private void Button_Clicked(object sender, EventArgs e)
         {
-            if (url_box.Text != null && destiny_box.Text != null && System.IO.Directory.Exists(new System.IO.FileInfo(destiny_box.Text).DirectoryName))
+            if (url_box.Text != null && destiny_box.Text != null && System.IO.Directory.Exists(destiny_box.Text))
             {
-                AndroidDownloader dl = DependencyService.Get<AndroidDownloader>();
-                dl.OnFileDownloaded += Dl_OnFileDownloaded;
-                if (!Directory.Exists(destiny_box.Text))
-                    Directory.CreateDirectory(destiny_box.Text);
-                destiny_box.Text = Xamarin.Essentials.FileSystem.CacheDirectory;
-                dl.DownloadFile(url_box.Text, Path.Combine(destiny_box.Text, "update.dat"));
-                btn = (Button)sender;
+                if (btn == null)
+                    btn = (Button)sender;
+                var flag = false;
+                try { File.Move(url_box.Text, destiny_box.Text); flag = true; } catch { }
+                var t = flag ? Android.Widget.Toast.MakeText(AppContext, "File moved", Android.Widget.ToastLength.Short) : Android.Widget.Toast.MakeText(AppContext, "Cannot move file", Android.Widget.ToastLength.Short);
+                t.Show();
             }
         }
-
         private void Dl_OnFileDownloaded(object sender, DownloadEventArgs e)
         {
             if (btn != null)
