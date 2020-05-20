@@ -23,14 +23,14 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "monoandroid90"
+          "monoandroid81"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "monoandroid90": {
+          "monoandroid81": {
             "projectReferences": {
               "C:\\Users\\Gustavo\\Desktop\\Programs\\.Projects\\Repos\\TestDownloadApp\\Download\\Download\\Download.csproj": {
                 "projectPath": "C:\\Users\\Gustavo\\Desktop\\Programs\\.Projects\\Repos\\TestDownloadApp\\Download\\Download\\Download.csproj"
@@ -40,7 +40,7 @@
         }
       },
       "frameworks": {
-        "monoandroid90": {
+        "monoandroid81": {
           "dependencies": {
             "Xamarin.Essentials": {
               "target": "Package",
