@@ -10,7 +10,28 @@
         <Entry x:Name="url_box" Placeholder="Url" Text="/storage/emulated/0/Download/update.dat" />
         <Entry x:Name="destiny_box" Placeholder="Destiny Directory" Text="/storage/15E8-1113/file.dat" />
         <Button Clicked="Button_Clicked" Text="Download" />
-        <!-- Place new controls here -->
+
+        <ListView ItemTapped="ListView_ItemSelected" ItemsSource="{Binding Objs}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="1"
+                           Text="{Binding Content}"
+                           FontAttributes="Bold" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 
 </ContentPage>
